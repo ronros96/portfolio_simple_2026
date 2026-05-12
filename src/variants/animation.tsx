@@ -13,7 +13,6 @@ export const popUpVar = {
     top:'-3rem',
     left:'0',
     rotate:0,
-    
   },
 }
 
