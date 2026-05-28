@@ -19,7 +19,7 @@ const Left = () =>{
           </h2>
         </div>
         <div>
-          <p>A seasoned Web Developer and Creative Artist. I have a deep understanding of modern front-end technologies and a keen eye for design. Over {year()} years, I've worked with a variety of clients, creating visually appealing and user-friendly interfaces for their websites and applications.</p>
+          <p>A seasoned Front-end Developer and Creative Artist with {year()} years of experience across various industries, including Digital Marketing, Product Design, Magazine Layout Design, and E-commerce.</p>
           <p><a className='cta' href="./resume.pdf" target='_blank'><span>View my Resume</span></a></p>
         </div>
       </div>

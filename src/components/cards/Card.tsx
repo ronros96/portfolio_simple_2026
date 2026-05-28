@@ -1,4 +1,5 @@
 import './cards.css'
+import clsx from 'clsx';
 
 const Card = (props:any) =>{
   const proj = [];
@@ -12,7 +13,7 @@ const Card = (props:any) =>{
   const link = proj[0].props.link;
 
   return(
-    <div className='card'>
+    <div className={clsx('card',{'graphic':type === 'graphic'})} >
       <div className='img-container'>
         <a href={link} rel='noopener' target='_blank'>
           <img src={`./project_images/${img}`} alt="Sample Image" />
@@ -20,7 +21,7 @@ const Card = (props:any) =>{
       </div>
       <div className='desc-container'>
         <a href={link} rel="noopener" target='_blank'>
-          <h4>{name}</h4>
+          <h5>{name}</h5>
         </a>
         <div className='tags'>
           {
@@ -33,9 +34,9 @@ const Card = (props:any) =>{
         {
           type === 'graphic' ? 
           <a href={link} className='cta' rel='noopener' target='_blank'>
-            <span>View Project</span>
+            <span>View Design</span>
           </a> : <a href={link} className='cta' rel='noopener' target='_blank'>
-            <span>Visit Website</span>
+            <span>Visit Page</span>
           </a>
         }
       </div>
