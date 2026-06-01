@@ -9,6 +9,6 @@ export const useActive = create((set) => ({
 
 export const useProjects = create((set) => ({
   projectDataAll: Data,
-  projectFilter: ['all'],
+  projectFilter: {},
   setProjectFilter: (state:any) => set({projectFilter:state}),
 }));

@@ -53,7 +53,7 @@ body{
 }
 
 main{
-  min-width: 100svw;
+  min-width: 100%;
   min-height: 100svh;
   background-color: var(--black);
 }

@@ -4,6 +4,7 @@ import Cards from '@components/cards/Cards';
 import Filter from '@components/filter/Filter';
 
 const Right = () =>{
+  
   return(
     <div className="container">
       <Filter/>
