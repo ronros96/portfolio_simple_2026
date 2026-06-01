@@ -15,7 +15,9 @@ const Cards = () =>{
             )  
           })
         }
+        <span className="last-content">End of content</span>
       </div>   
+
     </div>
   )
 }

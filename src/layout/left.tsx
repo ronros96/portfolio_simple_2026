@@ -1,4 +1,5 @@
 import './layout.css';
+import { TbArrowMoveDown } from "react-icons/tb";
 
 const year = () =>{
   const yr_start = new Date('02-01-2009');
@@ -23,6 +24,7 @@ const Left = () =>{
           <p><a className='cta' href="./resume.pdf" target='_blank'><span>View my Resume</span></a></p>
         </div>
       </div>
+      <div className='works-btn'>View my works <TbArrowMoveDown size={'2rem'} color={'var(--pri-blue)'}/></div>
     </div>
   )
 }
