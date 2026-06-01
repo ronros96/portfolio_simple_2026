@@ -1,48 +1,29 @@
 import './filter.css';
 import { FiFilter } from "react-icons/fi";
 
-import { useProjects } from "@src/store/store";
+import Data from "@src/data/projects.json";
+import { useTagStore } from "@src/store/store";
+import { useEffect, useRef } from 'react';
 
 const Filter = () =>{
-  const projectDataAll =  useProjects((state:any) => state.projectDataAll);
-  const projectFilter = useProjects((state:any) => state.projectFilter);
-  const setProjectFilter = useProjects((state:any) => state.setProjectFilter);
+  const tags =  useTagStore((state:any) => state.tags);
+  const initTags  = useTagStore((state) => state.initTags);
 
-  let tagArr:any = []
+  useEffect(() => {
+    initTags(Data);
+  }, []);
 
-  const getTags = (
-    current: Record<string, number>,
-    incoming: string[]
-  ) => {
-    const updated = { ...current };
+  console.log(tags)
 
-    incoming.forEach((tag) => {
-      updated[tag] = tag in updated ? updated[tag] + 1 : 0;
-    });
-
-    return Object.keys(updated)
-      .sort()
-      .reduce<Record<string, number>>((acc, key) => {
-        acc[key] = updated[key];
-        return acc;
-      }, {});
-  };
-
-  projectDataAll.map((proj:any)=>{
-    tagArr = getTags(projectFilter,proj.tags)
-    // setProjectFilter(tagArr)
+  const filterTags = tags.map((tag:any) => {
+    return (<div key={tag.name} className='filter-tag'>{tag.name} <span>{tag.count}</span></div>)
   })
-
-  console.log(tagArr);
-
+ 
 
   return(
     <div className="filter-container">
       <div className='filter-btn'><FiFilter/></div>
-      <div className='filter-tag'>All <span>100</span></div>
-      <div className='filter-tag'>React <span>9</span></div>
-      <div className='filter-tag'>Javascript <span>32</span></div>
-      <div className='filter-tag'>HTML / CSS <span>15</span></div>
+      {filterTags}
     </div>
   )
 }
