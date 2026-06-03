@@ -2,12 +2,27 @@ import { create } from "zustand";
 
 /** STATE FOR RIGHT SIDE ACTIVATION */
 
-export const useActive = create((set) => ({
+interface Layout {
+  isHover: boolean;
+  setActive: (state:any) => void;
+}
+
+export const useActive = create<Layout>((set) => ({
   isHover: false,
   setActive: (state:any) => set({isHover:state}),
 }));
 
 /** STATE FOR PROJECT TAGS */
+
+type Data = {
+  name:string,
+  type:string,
+  img:string,
+  tags:string[],
+  link:string,
+  desc:string,
+  case:string
+}
 
 type Tag = {
   name: string;
@@ -15,43 +30,48 @@ type Tag = {
   count: number;
 };
 
-interface TagStore {
+interface Filter {
   tags: Tag[];
   initialized: boolean;
-  initTags: (data: typeof Data) => void;
+  focused: boolean;
+  initTags: (data: Data) => void;
+  setFocus: (state: any) => void;
 }
 
-export const useTagStore = create<TagStore>((set) => ({
+export const useFilter = create<Filter>((set) => ({
   tags: [],
   initialized: false,
+  focused: false,
 
-  initTags: (data) =>
-    set((state) => {
-      if (state.initialized) return state;
+  initTags:(data) => set((state) => {
+    if (state.initialized) return state;
 
-      const map = new Map<string, Tag>();
+    const map = new Map<string, Tag>();
 
-      data.forEach((proj:any) => {
-        proj.tags.forEach((name: string) => {
-          const existing = map.get(name);
+    data.forEach((proj:any) => {
+      proj.tags.forEach((name: string) => {
+        const existing = map.get(name);
 
-          if (existing) {
-            existing.count += 1;
-          } else {
-            map.set(name, {
-              name,
-              en: false,
-              count: 1,
-            });
-          }
-        });
+        if (existing) {
+          existing.count += 1;
+        } else {
+          map.set(name, {
+            name,
+            en: false,
+            count: 1,
+          });
+        }
       });
+    });
 
-      return {
-        tags: Array.from(map.values()).sort((a, b) =>
-          a.name.localeCompare(b.name)
-        ),
-        initialized: true,
-      };
-    }),
+    return {
+      tags: Array.from(map.values()).sort((a, b) =>
+        a.name.localeCompare(b.name)
+      ),
+      initialized: true,
+    };
+  }),
+
+  setFocus: (state:any) => set({focused:state}),
 }));
+
