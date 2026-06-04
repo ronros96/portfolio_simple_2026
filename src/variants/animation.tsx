@@ -4,14 +4,14 @@ const bounce = [0.97, -0.41, 0.29, 1.37] as const;
 export const popUpVar = {
   init:{
     opacity:0,
-    top:'3rem',
+    top:'2rem',
     left:'1rem',
     rotate:45,
   },
   pop:{
     opacity:1,
-    top:'-3rem',
-    left:'0',
+    top:'-3.5rem',
+    left:'-1rem',
     rotate:0,
   },
 }

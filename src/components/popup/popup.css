@@ -3,8 +3,9 @@
   /* display: none; */
   top: 0;
   left: 0;
-  background-color: #FFC400;
-  padding: 1rem 2rem;
+  min-width: 10rem;
+  background-color: var(--pri-blue);
+  padding: .5rem 1rem;
   font-size: var(--font-base);
   font-weight: 700;
   color: var(--text-default);
@@ -18,7 +19,7 @@
     width: 1rem;
     height: 1rem;
     clip-path: polygon(100% 0, 0 0, 100% 100%);
-    background-color: #FFC400;
+    background-color: var(--pri-blue);
   }
 }
 

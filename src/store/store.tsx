@@ -1,5 +1,12 @@
 import { create } from "zustand";
 
+/** STATE FOR POP-UP */
+
+export const usePopUp = create((set) => ({
+  isHover: false,
+  setPopHover: (state:any) => set({isHover:state}),
+}));
+
 /** STATE FOR RIGHT SIDE ACTIVATION */
 
 interface Layout {

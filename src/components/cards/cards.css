@@ -4,6 +4,34 @@
   margin-top: 3rem;
   width: 100%;
   overflow-y:auto;
+
+  @container (min-width: 840px){
+    .card-content{
+      columns: 3;
+    }
+  }
+
+  @container (min-width: 1024px){
+    .card-content{
+      columns: 4;
+    }
+  }
+
+  @container (min-width: 1280px){
+    .card-content{
+      columns: 5;
+    }
+  }
+
+  @container (min-width: 1400px){
+    .card-content{
+      columns: 6;
+    }
+  }
+
+  @media screen and (min-width:1200px){
+    padding-right: 2rem;
+  }
 }
 
 .card-content{
@@ -37,6 +65,11 @@
       height: 2px;
       background-color: #ccc;
     }
+  }
+
+  @media screen and (min-width:1200px){
+    column-gap: 2rem;
+    padding: 2rem 0;
   }
 }
 
@@ -92,50 +125,14 @@
     border: solid .25rem transparent;
     inset: .25rem;
   }
-}
 
-.graphic .tags span{
-  background-color: var(--pri-red);
-}
-
-
-@container (min-width: 840px){
-  .card-content{
-    columns: 3;
-  }
-}
-
-@container (min-width: 1024px){
-  .card-content{
-    columns: 4;
-  }
-}
-
-@container (min-width: 1280px){
-  .card-content{
-    columns: 5;
-  }
-}
-
-@container (min-width: 1400px){
-  .card-content{
-    columns: 6;
-  }
-}
-
-@media screen and (min-width:1200px){
-  .card-container{
-    padding-right: 2rem;
-  }
-
-  .card-content{
-    column-gap: 2rem;
-    padding: 2rem 0;
-  }
-
-  .card{
+  @media screen and (min-width:1200px){
     margin-bottom: 2rem;
     padding: 1rem;
     border-radius: 2rem;
   }
+}
+
+.graphic .tags span{
+  background-color: var(--pri-red);
 }

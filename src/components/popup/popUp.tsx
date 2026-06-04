@@ -2,9 +2,9 @@ import type { ReactNode } from 'react';
 import './popup.css'
 import clsx from 'clsx';
 
-import { usePopUp } from "@src/store/store";
+import {usePopUp} from "@src/store/store";
 import {motion} from 'motion/react';
-import { popUpVar, transition } from '@src/variants/animation';
+import {popUpVar, transition} from '@src/variants/animation';
 
 interface PopUpProps {
   className?: any | any[];

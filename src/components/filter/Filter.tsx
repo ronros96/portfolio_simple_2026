@@ -21,16 +21,17 @@ const Filter = () =>{
   }, []);
 
 
-  const filterTags = tags.map((tag:any) => {
+  const filterTags = tags.map((tag:any,ctr:number) => {
     return (
-      <div className='filter-tag-container'>
-        <input type='checkbox' id={tag.name}/>
+      <div className='filter-tag-container' key={`td-${ctr}`}>
+        <input key={`${tag.name}-tag`} type='checkbox' id={tag.name}/>
         <label key={tag.name} htmlFor={tag.name} className={clsx('filter-tag',{'active':tag.en})}>
-
-          {tag.name} <span>{tag.count}</span>
+          <FaRegSquare className='uncheck'/> 
+          <FaRegSquareCheck className='checked'/>
+          {tag.name}
+          <span>{tag.count}</span>
         </label>
-      </div>
-      
+      </div> 
     )
   })
  
@@ -43,9 +44,11 @@ const Filter = () =>{
       <div className='filter-close' onClick={()=>setFocus(false)}>
         <IoCloseSharp/>
       </div>
-      <div className='filter-tag-container'>
-        <input type='checkbox' id='all'/>
+      <div key='tc-a' className='filter-tag-container'>
+        <input key={'all-tags'} type='checkbox' id='all' checked/>
         <label key={'all'} className='filter-tag active' htmlFor='all'>
+          <FaRegSquare className='uncheck'/> 
+          <FaRegSquareCheck className='checked'/>
           All <span>{cardCount}</span>
         </label>
       </div>
