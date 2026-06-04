@@ -2,8 +2,10 @@ import './layout.css';
 import { TbArrowMoveUp } from "react-icons/tb";
 import Cards from '@components/cards/Cards';
 import Filter from '@components/filter/Filter';
+import { useScroll } from "@src/store/store";
 
 const Right = () =>{
+    const setScroll =  useScroll((state:any) => state.setScroll);
   
   return(
     <div className="container">
@@ -15,7 +17,7 @@ const Right = () =>{
       <div className='content'>
         <Cards/>
       </div>
-      <div className='btn-totop'>
+      <div className='btn-totop' onClick={()=>setScroll(false)}>
         <TbArrowMoveUp size={'2rem'}/>
       </div>
     </div>

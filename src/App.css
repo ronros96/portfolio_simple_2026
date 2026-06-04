@@ -50,6 +50,7 @@ body{
   font-family: var(--roboto);
   font-size: var(--font-base);
   color: var(--text-default);
+  overflow: hidden;
 }
 
 main{

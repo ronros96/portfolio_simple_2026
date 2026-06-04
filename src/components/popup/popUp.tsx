@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import {usePopUp} from "@src/store/store";
 import {motion} from 'motion/react';
-import {popUpVar, transition} from '@src/variants/animation';
+import {popUpVar, Bounce} from '@src/variants/animation';
 
 interface PopUpProps {
   className?: any | any[];
@@ -13,13 +13,13 @@ interface PopUpProps {
 }
 
 const PopUp = ({ className, children }: PopUpProps) =>{
-  const popHover = usePopUp((state:any) => state.isHover);
+  const hoverStates = usePopUp((state:any) => state.isHover);
 
   return(
     <motion.span
       variants={popUpVar}
-      transition={transition}
-      className={clsx('pop-up',{className},{'pop':popHover})}
+      transition={Bounce}
+      className={clsx('pop-up',{className},{'pop':hoverStates})}
     >
       {children}
     </motion.span>

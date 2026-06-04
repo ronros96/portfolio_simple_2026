@@ -1,14 +1,35 @@
 import { create } from "zustand";
 
-/** STATE FOR POP-UP */
+/** STATE FOR SLIDE MOBILE */
+interface Scroll {
+  scrolled: boolean;
+  setScroll: (state:any) => void;
+}
 
-export const usePopUp = create((set) => ({
-  isHover: false,
-  setPopHover: (state:any) => set({isHover:state}),
+export const useScroll = create<Scroll>((set) => ({
+  scrolled: false,
+  setScroll: (state:any) => set({scrolled:state}),
+}));
+
+/** STATE FOR POP-UP */
+interface PopUpStore {
+  hoverStates: Record<string, boolean>;
+  setPopHover: (id: string, state: boolean) => void;
+}
+
+export const usePopUp = create<PopUpStore>((set) => ({
+  hoverStates: {},
+
+  setPopHover: (id, state) =>
+    set((store) => ({
+      hoverStates: {
+        ...store.hoverStates,
+        [id]: state,
+      },
+    })),
 }));
 
 /** STATE FOR RIGHT SIDE ACTIVATION */
-
 interface Layout {
   isHover: boolean;
   setActive: (state:any) => void;

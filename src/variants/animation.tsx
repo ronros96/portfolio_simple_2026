@@ -1,5 +1,5 @@
 const bounce = [0.97, -0.41, 0.29, 1.37] as const;
-// const simpleEase = [0.81, 0.14, 0.53, 0.74] as const;
+const simpleEase = [0.81, 0.14, 0.53, 0.74] as const;
 
 export const popUpVar = {
   init:{
@@ -16,8 +16,23 @@ export const popUpVar = {
   },
 }
 
-export const transition = {
+export const scrollVar = {
+  start:{
+    top:0
+  },
+  scrolled:{
+    top:'-100svh'
+  },
+}
+
+export const Bounce = {
   duration:0.5,
   delay:0.1,
   ease: bounce,
+}
+
+export const Ease = {
+  duration:0.5,
+  delay:0.1,
+  ease: simpleEase,
 }

@@ -40,8 +40,6 @@ const Filter = () =>{
     {}
   );
 
-  console.log(selectedTags.length === 0 ? true : false)
-
   const filterTags = allTags.map((tag:any,ctr:number) => {
     return (
       <div className='filter-tag-container' key={`td-${ctr}`}>
