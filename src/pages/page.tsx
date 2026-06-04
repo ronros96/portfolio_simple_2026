@@ -15,8 +15,8 @@ const Page = () =>{
     <>
       <title>Aaron Rosales</title>
       <section 
-        className='left-side'
-        onMouseOver={()=>{active(false);setFocus(false)}}
+        className={clsx('left-side',{'logo-mode':isActive})}
+        onClick={()=>{active(false);setFocus(false)}}
       >
         <Left/>
       </section>
@@ -27,7 +27,6 @@ const Page = () =>{
         <Right/>
       </section>
     </>
-    
   )
 }
 export default Page

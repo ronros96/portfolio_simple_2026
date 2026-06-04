@@ -7,29 +7,60 @@ import clsx from 'clsx';
 
 import Data from "@src/data/projects.json";
 import { useFilter } from "@src/store/store";
-import { useEffect} from 'react';
 
 const Filter = () =>{
-  const tags =  useFilter((state:any) => state.tags);
-  const initTags  = useFilter((state) => state.initTags);
-  const focused = useFilter((state) => state.focused);
-  const setFocus = useFilter((state) => state.setFocus);
-  const cardCount = Object.keys(Data).length
+  const selectedTags = useFilter(
+    (state) => state.selectedTags
+  );
+  const toggleTag = useFilter(
+    (state) => state.toggleTag
+  );
+  const showAll = useFilter(
+    (state) => state.showAll
+  );
+  const focused = useFilter(
+    (state) => state.focused
+  );
+  const setFocus = useFilter(
+    (state) => state.setFocus
+  );
+  const cardCount = Object.keys(Data).length;
 
-  useEffect(() => {
-    initTags(Data);
-  }, []);
+  const allTags = [...new Set(
+    Data.flatMap((project) => project.tags)
+  )].sort((a, b) => a.localeCompare(b));
 
+  const tagCounts = Data.reduce<Record<string, number>>(
+    (acc, project) => {
+      project.tags.forEach((tag) => {
+        acc[tag] = (acc[tag] || 0) + 1;
+      });
+      return acc;
+    },
+    {}
+  );
 
-  const filterTags = tags.map((tag:any,ctr:number) => {
+  console.log(selectedTags.length === 0 ? true : false)
+
+  const filterTags = allTags.map((tag:any,ctr:number) => {
     return (
       <div className='filter-tag-container' key={`td-${ctr}`}>
-        <input key={`${tag.name}-tag`} type='checkbox' id={tag.name}/>
-        <label key={tag.name} htmlFor={tag.name} className={clsx('filter-tag',{'active':tag.en})}>
+        <input 
+          key={`${tag}-tag`}
+          id={tag} 
+          type='checkbox'
+          checked={selectedTags.includes(tag)}
+          onChange={() => toggleTag(tag)}
+        />
+        <label 
+          key={tag} 
+          htmlFor={tag} 
+          className={clsx('filter-tag',{'active':tag.en})}
+        >
           <FaRegSquare className='uncheck'/> 
           <FaRegSquareCheck className='checked'/>
-          {tag.name}
-          <span>{tag.count}</span>
+          {tag}
+          <span>{tagCounts[tag]}</span>
         </label>
       </div> 
     )
@@ -45,8 +76,18 @@ const Filter = () =>{
         <IoCloseSharp/>
       </div>
       <div key='tc-a' className='filter-tag-container'>
-        <input key={'all-tags'} type='checkbox' id='all' checked/>
-        <label key={'all'} className='filter-tag active' htmlFor='all'>
+        <input 
+          id='all'
+          key={'all-tags'} 
+          type='checkbox'  
+          onChange={showAll} 
+          checked={selectedTags.length === 0 ? true : false}
+        />
+        <label 
+          key={'all'} 
+          className='filter-tag' 
+          htmlFor='all'
+        >
           <FaRegSquare className='uncheck'/> 
           <FaRegSquareCheck className='checked'/>
           All <span>{cardCount}</span>

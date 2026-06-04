@@ -1,8 +1,8 @@
 import './layout.css';
 import { TbArrowMoveDown } from "react-icons/tb";
-import { FaGithubSquare } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
+import { FaGithub } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa";
+import { SiMinutemailer } from "react-icons/si";
 import { usePopUp } from "@src/store/store";
 
 import {motion} from 'motion/react';
@@ -13,7 +13,7 @@ const year = () =>{
   const yr_now = new Date();
   return yr_now.getFullYear() - yr_start.getFullYear();
 
-    const popUp =  usePopUp((state:any) => state.setPopHover);
+  const popUp =  usePopUp((state:any) => state.setPopHover);
   const isHover = usePopUp((state:any) => state.isHover);
 }
 
@@ -33,13 +33,13 @@ const Left = () =>{
         </div>
         <div className='contact-me'>
           <a href="mailto:p.aaronrosales@gmail.com" target='_blank' rel='noopener'>
-            <MdEmail size={'1.5rem'}/>
+            <SiMinutemailer size={'1.5rem'}/>
           </a>
           <a href="https://linkedin.com/in/aaronros" target='_blank' rel='noopener'>
-            <FaLinkedin size={'1.5rem'}/>
+            <FaLinkedinIn size={'1.5rem'}/>
           </a>
           <a href="https://github.com/ronros96" target='_blank' rel='noopener'>
-            <FaGithubSquare size={'1.5rem'}/>
+            <FaGithub size={'1.5rem'}/>
           </a>
         </div>
       </div>

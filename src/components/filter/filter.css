@@ -139,10 +139,6 @@
   transition-duration: .3s;
   transition-timing-function: var(--ease);
 
-  &.active{
-    display: flex;
-  }
-
   .uncheck{
     display: none;
     margin-right: .5rem;
@@ -167,6 +163,17 @@
       width: .01rem;
       background-color: #fff;
     }
+  }
+}
+
+.filter-tag-container input[type=checkbox]:checked + .filter-tag{
+  display: flex;
+  background-color: var(--solid-red);
+  color: #fff;
+
+  .uncheck,
+  .checked{
+    display: none;
   }
 }
 
