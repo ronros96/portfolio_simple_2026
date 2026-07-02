@@ -10,7 +10,7 @@ const Card = (props:any) =>{
   const name = proj[0].props.name;
   const tags = proj[0].props.tags;
   const desc = proj[0].props.desc;
-  const link = proj[0].props.link;
+  const link = type === 'graphic' ? `./project_pdfs/${proj[0].props.link}` : proj[0].props.link;
 
   return(
     <div className={clsx('card',{'graphic':type === 'graphic'})} >
@@ -26,7 +26,7 @@ const Card = (props:any) =>{
         <div className='tags'>
           {
             tags.map((tag:string,i:number)=>{
-              return <span key={i}>{tag}</span>
+              return <span key={i}>{tag}</span> 
             })
           }
         </div>
